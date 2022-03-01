@@ -15,6 +15,23 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
+      searchResults = searchByEyeColor(people);
+      break;
+    case 'no':
+      searchResults = searchByGender(people);
+      break;
+    case 'no':
+      searchResults = searchByDOB(people);
+      break;
+    case 'no':
+      searchResults = searchByHeight(people);
+      break;
+    case 'no':
+      searchResults = searchByWeight(people);
+      break;
+    case 'no':
+      searchResults = searchByOccupation
+    
       // TODO: search by traits
       break;
       default:
@@ -40,11 +57,12 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-     alert(displayPerson(person));
       return(displayPerson(person));
     // TODO: get person's info
     break;
     case "family":
+      // alert(displayFamily(person));
+      // return(displayFamily(person));
     // TODO: get person's family
     break;
     case "descendants":
@@ -86,22 +104,93 @@ function searchByName(people){
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
-  let chosenEyeColor = promptFor("What is the person's eye color?", autoValid);
+  let eyeColor = promptFor("What is the person's eye color?", autoValid);
   let foundEyeColor = people.filter(function(potentialMatch){
-    if(potentialMatch.eyeColor === chosenEyeColor){
+    if(potentialMatch.eyeColor === eyeColor){
       return true;
     }
     else{
       return false;
     }
   })
-  return foundEyeColor;
+  return foundEyeColor[0];
+}
+      
+function searchByGender(people){
+  let gender = promptFor("What is the person's gender?", autoValid);
 
+  let foundGender = people.filter(function(potentialMatch){
+    if(potentialMatch.gender === gender){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  return foundGender[0];
 }
 
+  function searchByHeight(people){
+    let height = promptFor("What is the person's height?", autoValid);
+  
+    let foundHeight = people.filter(function(potentialMatch){
+      if(potentialMatch.height === height){
+        return true;
+      }
+      else{
+        return false;
+      }
+    })
+    return foundHeight[0];
+  }
+
+  function searchByWeight(people){
+    let weight= promptFor("What is the person's weight?", autoValid);
+  
+    let foundWeight = people.filter(function(potentialMatch){
+      if(potentialMatch.weight === weight){
+        return true;
+      }
+      else{
+        return false;
+      }
+    })
+   
+    return foundWeight[0];
+  }
+
+  function searchByDOB(people){
+    let DOB = promptFor("What is the person's date of birth?", autoValid);
+
+    let foundDOB = people.filter(function(potentialMatch){
+      if(potentialMatch.DOB === DOB){
+        return true;
+      }
+      else{
+        return false;
+      }
+    })
+    
+    return foundDOB[0];
+  }
+
+  function searchByOccupation(people){
+    let occupation = promptFor("What does this person do for a living?", autoValid);
+  
+    let foundOccupation = people.filter(function(potentialMatch){
+      if(potentialMatch.occupation === occupation){
+        return true;
+      }
+      else{
+        return false;
+      }
+    })
+  
+    return foundOccupation[0];
+  }
 //TODO: add other trait filter functions here.
 
-// let tempPeople = people (100)
+// let tempPeople = people (23)
 // tempPeople = searchByEyeColor(tempPeople)  // 3
 // displayPeople(tempPeople)
 
@@ -129,8 +218,20 @@ function displayPerson(person){
   personInfo += "DOB: " + person.dob + "\n";
   personInfo += "Height: " + person.height + "\n";
   personInfo += "Weight: " + person.weight + "\n"
+  personInfo += "Eye Color: " + person.eyeColor + "\n";
+  personInfo += "Occupation: " + person.occupation + "\n";
+  personInfo += "\n" + "Select OK to go back to person or Cancel to start a new search"
+
+  let result = promptFor(personInfo, autoValid);
+  return result
+  
   // TODO: finish getting the rest of the information to display.
-  alert(personInfo);
+  
+}
+
+function displayFamily(person){
+  let familyInfo = "Parents: " + person.parents + "\n";
+  familyInfo += "Current Spouse: " + person.currentSpouse +"\n";
 }
 
 //#endregion
