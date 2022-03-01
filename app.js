@@ -40,7 +40,7 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-      alert(displayPerson(person));
+     alert(displayPerson(person));
       return(displayPerson(person));
     // TODO: get person's info
     break;
@@ -86,11 +86,24 @@ function searchByName(people){
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
+  let chosenEyeColor = promptFor("What is the person's eye color?", autoValid);
+  let foundEyeColor = people.filter(function(potentialMatch){
+    if(potentialMatch.eyeColor === chosenEyeColor){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  return foundEyeColor;
 
 }
 
 //TODO: add other trait filter functions here.
 
+// let tempPeople = people (100)
+// tempPeople = searchByEyeColor(tempPeople)  // 3
+// displayPeople(tempPeople)
 
 
 //#endregion
@@ -112,6 +125,10 @@ function displayPerson(person){
   // height, weight, age, name, occupation, eye color.
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
+  personInfo += "Gender: " + person.gender + "\n";
+  personInfo += "DOB: " + person.dob + "\n";
+  personInfo += "Height: " + person.height + "\n";
+  personInfo += "Weight: " + person.weight + "\n"
   // TODO: finish getting the rest of the information to display.
   alert(personInfo);
 }
