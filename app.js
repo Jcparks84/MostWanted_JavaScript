@@ -13,23 +13,29 @@ function app(people){
   switch(searchType){
     case 'yes':
       searchResults = searchByName(people);
-      break;
     case 'no':
+      promptFor("Would you like to search by eye color? Enter 'yes' or 'no'", yesNo).toLowerCase();
+    case 'yes':
       searchResults = searchByEyeColor(people);
-      break;
     case 'no':
+      promptFor("Would you like to search by gender? Enter 'yes' or 'no'", yesNo).toLowerCase();
+    case 'yes':
       searchResults = searchByGender(people);
-      break;
     case 'no':
+      promptFor("Would you like to search by DOB? Enter 'yes' or 'no'", yesNo).toLowerCase();
+    case 'yes':
       searchResults = searchByDOB(people);
-      break;
     case 'no':
+      promptFor("would you like to search by height? Enter 'yes' or 'no'", yesNo).toLowerCase();
+    case 'yes':
       searchResults = searchByHeight(people);
-      break;
     case 'no':
+      promptFor("would you like to search by weight? Enter 'yes' or 'no'", yesNo).toLowerCase();
+    case 'yes':
       searchResults = searchByWeight(people);
-      break;
     case 'no':
+      promptFor("Would you like to search by occupation? Enter 'yes' or 'no'", yesNo).toLowerCase();
+    case 'yes':
       searchResults = searchByOccupation
     
       // TODO: search by traits
